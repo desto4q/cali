@@ -1,18 +1,21 @@
 # from django.contrib import admin
-
 # Register your models here.
 from django.contrib import admin
-from django.contrib.auth.models import User, Group
-from .models import Profile, Tweet
+from django.contrib.auth.models import Group, User as US
+from .models import Profile, Tweet ,User
 
-    
-class ProfileInline(admin.StackedInline):
+class UserProfile(admin.StackedInline):
     model = Profile
+    max_num = 1    
+
 class UserAdmin(admin.ModelAdmin):
     model = User
     fields = ["username", "password"]
-    inlines = [ProfileInline]
-    
+    inlines = [UserProfile]
+
+
+
+admin.site.register(User)
 admin.site.register(Tweet,)
 admin.site.unregister(User,)
 admin.site.register(Profile)

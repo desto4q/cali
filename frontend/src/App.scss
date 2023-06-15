@@ -3,4 +3,94 @@
     margin:0;
     text-decoration: none;
     box-sizing: border-box;
+    font-family: 'montserrat';
+}
+
+$bg : #051520;
+$text: #00C2A3;
+$comp: #24405C;
+$comp1: #031B2E;
+
+
+.app {
+    display: flex;
+    min-height: 100dvh;
+    width: 100%;
+    background-color: $bg;
+}
+
+.nav {
+    background-color: $comp1;
+    position: sticky;
+    left: 0;
+    top: 0;
+    .content {
+        display: flex;
+        flex-direction: column;
+        padding: 24px 4px   ;
+        height: 100%;
+        .logo {
+            color: $text;
+            font-weight: 700;
+            font-size: 32px;
+        }
+        button {
+            margin-top: auto;
+        }
+        .link {
+            margin: auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            * {
+                transition: 0.2s ease;
+            }
+            a {
+                font-size: 18px;
+                color: $comp;
+                display: flex;
+                align-items: center;
+            }
+            a:is(:focus,:hover) {
+                color: $text;
+            }
+        }
+    }
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    .searchBar {
+        display: flex;
+        background-color: $comp1;
+        height: 62px;
+        width: 100%;
+        align-items: center;
+        padding: 0 24px;
+        .inputBox {
+            display: flex;
+            width: 100%;
+            max-width: 300px;
+            height: 28px;
+            overflow: hidden;            
+            input {
+                background-color: #777;
+                border-radius: 4px;
+                outline: none;
+                border: none;
+                width: 100%;
+                padding: 0 2px;
+                font-size: 12px;
+                color: white;
+            }
+            .input:focus {
+            
+            }
+            
+
+        }
+    }
 }

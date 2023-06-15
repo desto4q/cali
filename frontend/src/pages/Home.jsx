@@ -4,8 +4,9 @@ import axios from "axios"
 import { myAccess } from '../data/data'
 import { storage } from '../data/firebase/Firebase'
 import { ref,uploadBytes, listAll, getDownloadURL } from 'firebase/storage'
-// import UploadWidget from '../components/UploadWidget'
 import {v4} from "uuid"
+import SearchBar from '../components/SearchBar'
+import Feed from '../components/Feed'
 
 
 function Home() {
@@ -43,14 +44,18 @@ function Home() {
   }
   
   return (
-    <div className="home">  
-        <input type="file" name='image' onChange={(e)=>{
-          setImg(e.target.files[0])
-        }}/>
-        <button onClick={()=>{
-          uploadImg()
-        }}>upload</button>
+    // <div className="home">  
+    //     <input type="file" name='image' onChange={(e)=>{
+    //       setImg(e.target.files[0])
+    //     }}/>
+    //     <button onClick={()=>{
+    //       uploadImg()
+    //     }}>upload</button>
 
+    // </div>
+    <div className="home">
+      <SearchBar/>
+      <Feed/>
     </div>
   )
 }
