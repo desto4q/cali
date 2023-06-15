@@ -24,10 +24,11 @@ $comp1: #031B2E;
     position: sticky;
     left: 0;
     top: 0;
+    height: 100vh;
     .content {
         display: flex;
         flex-direction: column;
-        padding: 24px 4px   ;
+        padding: 24px 4px ;
         height: 100%;
         .logo {
             color: $text;
@@ -70,6 +71,8 @@ $comp1: #031B2E;
         width: 100%;
         align-items: center;
         padding: 0 24px;
+        position: sticky;
+        top: 0;
         .inputBox {
             display: flex;
             width: 100%;
@@ -77,16 +80,21 @@ $comp1: #031B2E;
             height: 28px;
             overflow: hidden;            
             input {
-                background-color: #777;
+                background-color: #4444;
                 border-radius: 4px;
                 outline: none;
                 border: none;
                 width: 100%;
                 padding: 0 2px;
                 font-size: 12px;
-                color: white;
+                color: white;                
             }
-            .input:focus {
+            ::placeholder {
+                color: $text;
+            }
+            input:focus {
+                border: 1px solid $text;
+                background-color: #7777;
             
             }
             
@@ -99,6 +107,8 @@ $comp1: #031B2E;
     // background-color: red;
     height: 100%;
     padding: 8px 24px;
+    display: flex;
+    gap: 10px;
 }
 
 .tweetUser {
@@ -158,7 +168,7 @@ $comp1: #031B2E;
             img {
                 height: 100%;
                 width: 100%;
-                object-fit: contain;
+                object-fit: cover;
             }
         }
         

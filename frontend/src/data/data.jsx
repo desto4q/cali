@@ -11,6 +11,6 @@ import axios from 'axios'
 
 export let fetchdata = async ()=> {
   let url = "http://127.0.0.1:8000/tweets_order/created_at?format=json"
-  let resp =  await axios.get(url).then(res=>res).catch(res=>res)
-  console.log(resp)
+  let resp =  await axios.get(url).then(res=>res.data).catch(res=>res)
+  return resp
 }

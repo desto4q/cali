@@ -1,10 +1,10 @@
 import React from 'react'
 
-function TweetUser() {
+function TweetUser({user,img}) {
   return (
     <div className="tweetUser">
-        <img src="" alt="" />
-        <p>Testing</p>
+        <img src={img} alt="" />
+        <p>{user && user}</p>
     </div>
   )
 }

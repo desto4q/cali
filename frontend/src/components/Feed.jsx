@@ -4,15 +4,26 @@ import { fetchdata } from '../data/data'
 
 function Feed() {
   let [data,setData]= useState([])
-  useEffect(()=>{
-    fetchdata()
+
+  let fetching = async () => {
+    let resp =  await fetchdata()
+    setData(resp)
+
+  }
+  useEffect(  ()=>{
+    fetching()
   },[])
+
+
   useEffect(()=>{
     console.log(data)
   },[data])
   return (
     <div className="feed">
-      <Tweet/>
+      {data != [] ? data.map(({body,image,user})=> {
+        return <Tweet body={body} user={user} image={image}/>
+      })
+    : <></>}
     </div>
   )
 }
