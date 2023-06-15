@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 // import {CloudinaryContext,Image} from "cloudinary-react"
 import axios from "axios"
-import { myAccess } from '../data/data'
 import { storage } from '../data/firebase/Firebase'
 import { ref,uploadBytes, listAll, getDownloadURL } from 'firebase/storage'
 import {v4} from "uuid"

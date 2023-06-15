@@ -8,15 +8,25 @@ from django.dispatch import receiver
 
 class User(models.Model):
     username = models.CharField(max_length=40,unique=True)
-    password = models.CharField(max_length=20)
+    password = models.CharField(max_length=20,default="")
     def __str__(self):
         return f"{self.username}"
 
+
+class Profile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    follows = models.ManyToManyField("self", related_name="followed_by",symmetrical=False,blank=True)
+    profileImg = models.CharField(max_length=500,blank=True,)
+    def __str__(self):
+        return self.user.username    
+
+
 class Tweet(models.Model):
-    user = models.ForeignKey(User,related_name="meeps", on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(Profile,related_name="meeps", on_delete=models.DO_NOTHING,related_query_name="profile")
     body = models.CharField(max_length=1000)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.CharField(max_length=500, null=True, blank=True)
+    
     def __str__(self) -> str:
         return (f"{self.user}" f"{self.created_at:%Y-%M-%D}:" f"{self.body}")
     
@@ -24,13 +34,6 @@ class Tweet(models.Model):
 
 
 
-
-class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    follows = models.ManyToManyField("self", related_name="followed_by",symmetrical=False,blank=True)
-
-    def __str__(self):
-        return self.user.username    
 
 
 @receiver(post_save,sender=User)

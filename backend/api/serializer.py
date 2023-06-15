@@ -1,12 +1,21 @@
 from rest_framework import serializers
-from base.models import Tweet,User
+from base.models import Tweet,User,Profile
+
+class ProfileSerializer(serializers.ModelSerializer):
+    user = serializers.SlugRelatedField(slug_field="username",read_only=True)
+    class Meta:
+        model = Profile
+        fields = ["id","user","profileImg"]
 
 
 class tweetserializer(serializers.ModelSerializer):
+    user = ProfileSerializer()
     class Meta:
         model = Tweet
-        fields ="__all__"
+        fields = "__all__"
         extra_kwargs = {'std_code': {'required': False},'uni_code': {'required': False},'last_name': {'required': False},'first_name': {'required': False}}
+        
+        
         
 class userSerializer(serializers.ModelSerializer): 
     class Meta:

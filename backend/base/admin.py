@@ -1,7 +1,7 @@
 # from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
-from django.contrib.auth.models import Group, User as US
+from django.contrib.auth.models import Group
 from .models import Profile, Tweet ,User
 
 class UserProfile(admin.StackedInline):
