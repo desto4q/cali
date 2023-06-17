@@ -1,16 +1,40 @@
-// export let myAccess = { 
-//   cloud_name: 'dprezsx7k', 
-//   api_key: '814529555534654', 
-//   api_secret: 'InOaLHpgZamnNlrslBwB5hMA1i0' 
-// }
-
-
-// a
+import { ref,uploadBytes, listAll, getDownloadURL } from 'firebase/storage'
+import {v4} from "uuid"
+import { storage } from '../data/firebase/Firebase'
 
 import axios from 'axios'
-
+let url = "http://127.0.0.1:8000/tweets_order/created_at?format=json"
 export let fetchdata = async ()=> {
-  let url = "http://127.0.0.1:8000/tweets_order/created_at?format=json"
+  
   let resp =  await axios.get(url).then(res=>res.data).catch(res=>res)
   return resp
 }
+
+export let sendData = async ({c}) => {
+  
+  let url = "http://127.0.0.1:8000/tweet/add"
+  let resp = await axios.post(url,c).then(res =>res.data)
+  return resp
+}
+
+
+
+ export const uploadImg= async ({img})=> {
+  if (img == null) {
+    return;
+  }
+  else {
+    console.log("ss")
+    const imgRef = ref(storage, `images/${img.name + v4()}`)
+    let  resp =  await uploadBytes(imgRef,img).then(async (res)=>{
+      let imgRef = res.ref
+      let response = await getDownloadURL(imgRef).then(itm=>{
+        return itm
+      })
+      return response
+    })
+    // .catch(err=>{console.log(err)})
+    return resp 
+  }
+}
+

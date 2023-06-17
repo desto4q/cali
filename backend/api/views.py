@@ -2,7 +2,7 @@ from rest_framework.response import Response;
 from rest_framework.decorators import api_view
 from django.shortcuts import render, HttpResponse
 from base.models import Tweet, User
-from .serializer import tweetserializer,userSerializer
+from .serializer import *
 from django.db.models import Q
 
 
@@ -35,7 +35,8 @@ def find_user(request,pk):
 @api_view(["GET"])
 def all_tweets_ordered(request,pk):
     tweetsList = Tweet.objects.all().order_by(pk)
-    serializer = tweetserializer(tweetsList,many=True)
+    serializer = PostSerializer(tweetsList,many=True)
+    # serializer = tweetserializer()
     return Response(serializer.data)
 
 @api_view(["POST"])

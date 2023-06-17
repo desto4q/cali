@@ -9,7 +9,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class tweetserializer(serializers.ModelSerializer):
-    user = ProfileSerializer()
+    # user = ProfileSerializer()
     class Meta:
         model = Tweet
         fields = "__all__"
@@ -24,8 +24,15 @@ class userSerializer(serializers.ModelSerializer):
         extra_kwargs = {'std_code': {'required': False},'uni_code': {'required': False},'last_name': {'required': False},'first_name': {'required': False}}
         
         
+class PostProfile(serializers.ModelSerializer):
+    user = serializers.SlugRelatedField(slug_field="username",read_only=True)
+    class Meta:
+        model = Profile
+        fields = ["user"]
         
-    
         
-        
-        
+class PostSerializer(serializers.ModelSerializer):
+    user = PostProfile()
+    class Meta: 
+        model = Tweet
+        fields = "__all__"

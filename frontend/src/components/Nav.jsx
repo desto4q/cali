@@ -5,13 +5,13 @@ function Nav() {
 
     let Links = [
         {
-            name: "Profile",
+            name: "Home",
             to: "",
             icon: "",
         },
         {
-            name: "Feed",
-            to: "",
+            name: "Post",
+            to: "/post",
             icon: "",
         },
         {
@@ -34,7 +34,7 @@ function Nav() {
             <div className='link'>
                 {Links.map(({name,icon,to},key)=>{
                     return (
-                        <Link key={key}>
+                        <Link key={key} to={to}>
                             {name}
                         </Link>
                     )
