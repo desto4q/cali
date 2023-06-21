@@ -2,7 +2,8 @@ import React from 'react'
 import "./App.scss"
 import WebFont from 'webfontloader'
 import Router from './router/Router'
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
+import { login } from './redux/slices/userSlice'
 
 function App() {
   WebFont.load({
@@ -10,6 +11,11 @@ function App() {
       families: ["Montserrat"]
     }
   })
+  let dispatch = useDispatch()
+  let user = JSON.parse(localStorage.getItem("user"))
+  if (user != null) {
+    dispatch(login(user))
+  }
   
   
   return (

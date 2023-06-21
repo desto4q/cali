@@ -33,6 +33,7 @@ function Login() {
                     const notify = () => toast("logged in")
                     notify()
                     let data = {...res.data}
+                    localStorage.setItem("user",JSON.stringify(data))
                     dispatch(login(data))
                     
                     
@@ -48,7 +49,6 @@ function Login() {
             <>
         <Navigate to="/"/>
         </>
-
         )
             }
   return (

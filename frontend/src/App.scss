@@ -226,6 +226,16 @@ $comp1: #031B2E;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        .preview {
+            padding: 2px;
+            background-color: mediumorchid;
+            width: fit-content;
+            img  {
+                width: 100%;
+                max-width: 200px;
+                height: 100%;
+            }
+        }
         form {
             background-color: transparentize($color: $comp, $amount: .4);
             border: 1px solid $text;

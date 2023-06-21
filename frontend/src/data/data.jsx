@@ -21,10 +21,10 @@ export let sendData = async ({c}) => {
 
  export const uploadImg= async ({img})=> {
   if (img == null) {
-    return;
+    return "null";
   }
   else {
-    console.log("ss")
+    console.log("uploading")
     const imgRef = ref(storage, `images/${img.name + v4()}`)
     let  resp =  await uploadBytes(imgRef,img).then(async (res)=>{
       let imgRef = res.ref

@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import UserProfile from './UserProfile'
+import { useSelector } from 'react-redux'
 
 function Nav() {
 
+    const  user = useSelector(state=>state.user)
     let Links = [
         {
             name: "Home",
@@ -25,16 +27,7 @@ function Nav() {
             to: "",
             icon: "",
         },
-        {
-            name: "Login",
-            to: "login",
-            icon: "",
-        },
-        {
-            name: "Signup",
-            to: "signup",
-            icon: "",
-        },
+        
     ]
   return (
     <div className="nav">
@@ -51,6 +44,7 @@ function Nav() {
                         </Link>
                     )
                 })}
+                {user.username == "" ? <><Link to={"signup"}>Signup</Link> <Link to={"login"}>Login</Link></>: <></>}
             </div>
             <button>logout</button>
         </div>

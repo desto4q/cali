@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 
 function UserProfile() {
     let user = useSelector(state=> {
-        console.log(state.user)
         return state.user
     })
 
