@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import UserProfile from './UserProfile'
 
 function Nav() {
 
@@ -24,6 +25,16 @@ function Nav() {
             to: "",
             icon: "",
         },
+        {
+            name: "Login",
+            to: "login",
+            icon: "",
+        },
+        {
+            name: "Signup",
+            to: "signup",
+            icon: "",
+        },
     ]
   return (
     <div className="nav">
@@ -32,6 +43,7 @@ function Nav() {
                 Cali
             </div>
             <div className='link'>
+                <UserProfile/>
                 {Links.map(({name,icon,to},key)=>{
                     return (
                         <Link key={key} to={to}>

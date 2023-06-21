@@ -3,13 +3,15 @@ from rest_framework.decorators import api_view
 from django.shortcuts import render, HttpResponse
 from base.models import Tweet, User
 from .serializer import *
+from django.http import JsonResponse
 from django.db.models import Q
+import json
 
 
 @api_view(["GET"])
 def home(request):
     users = User.objects.all()
-    serializer = userSerializer(users, many=True)
+    serializer = fetchSerializer(users, many=True)
     return Response(serializer.data)
 
 
@@ -49,11 +51,33 @@ def post_tweet(request):
 
 @api_view(["POST"])
 def create_user(request):
+    L_user = request.data.get("username")
+    L_password = request.data.get("password")
     try:
+        exist = userSerializer(User.objects.get(username = L_user))
+        return Response("exist")
+    except:
         user = userSerializer(data=request.data)
-        exist = User.objects.get(username = user.username)
-        if user.username != exist:
+        if user.is_valid():
             user.save()
             return Response(user.data)
-    except:
-        return Response("exists")
+        else:
+            return Response("wrong format")
+
+@api_view(['POST'])
+def login(request):
+    L_user = request.data.get("username")
+    L_password = request.data.get("password")
+    try: 
+        exist = userSerializer(User.objects.get(username = L_user))
+        check_Pass = exist.data.get("password")
+        if L_password  == check_Pass: 
+            return Response(exist.data)
+        else:
+            return Response("incorrect password")
+    except: 
+        return Response("err")
+    
+    
+    
+

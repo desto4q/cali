@@ -10,5 +10,6 @@ urlpatterns = [
     path("tweet/add", views.post_tweet, name="post"),
     path("user/<str:pk>", views.find_user, name="findUser"),
     path("create/", views.create_user, name="createUser"),
+    path("login/", views.login, name="login"),
     
 ] 

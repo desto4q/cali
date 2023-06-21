@@ -23,6 +23,12 @@ class userSerializer(serializers.ModelSerializer):
         fields = "__all__"
         extra_kwargs = {'std_code': {'required': False},'uni_code': {'required': False},'last_name': {'required': False},'first_name': {'required': False}}
         
+class fetchSerializer(serializers.ModelSerializer): 
+    class Meta:
+        model = User
+        fields = ["id","username"]
+        extra_kwargs = {'std_code': {'required': False},'uni_code': {'required': False},'last_name': {'required': False},'first_name': {'required': False}}
+        
         
 class PostProfile(serializers.ModelSerializer):
     user = serializers.SlugRelatedField(slug_field="username",read_only=True)

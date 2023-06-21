@@ -6,7 +6,7 @@ export let userContext = createContext()
 
 export let  AppContext = ({children}) =>{
 
-  
+  // let [user]   
   let values = {
 
   }
