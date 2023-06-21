@@ -36,7 +36,7 @@ def find_user(request,pk):
 
 @api_view(["GET"])
 def all_tweets_ordered(request,pk):
-    tweetsList = Tweet.objects.all().order_by(pk)
+    tweetsList = Tweet.objects.all().order_by(pk).reverse()
     serializer = PostSerializer(tweetsList,many=True)
     # serializer = tweetserializer()
     return Response(serializer.data)
@@ -81,3 +81,10 @@ def login(request):
     
     
 
+@api_view(["POST"])
+def delete_tweet(request):
+    l_id = request.data.get("id")
+    getTweet = Tweet.objects.get(id = l_id)
+    tweet = tweetserializer(getTweet)
+    getTweet.delete()
+    return Response(tweet.data)

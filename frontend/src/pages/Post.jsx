@@ -37,12 +37,21 @@ function Post() {
         const notify =() => toast("pending")
             notify()
         let resp = await uploadImg({img: img}).then(async res=> {
-            
             let username =  user.id
             let cont = e.target[0].value
             let image = res
             if (cont == "" || cont== " ") {
                 cont = "unknown"
+                let content = {
+                    user: username,
+                    body: cont,
+                    image: image,
+                }
+                let newresp = await toast.promise(sendData({c: content}),{pending: "ispending",success: "success",error: "error"}).then(res => {
+                    console.log(res)
+                })
+            }
+            else {
                 let content = {
                     user: username,
                     body: cont,
@@ -71,7 +80,7 @@ function Post() {
   return (
     <div className="post">
         <img src={bgIMG} alt="" className="bgImg" />
-            <ToastContainer theme='dark' limit={3}/>
+            <ToastContainer theme='dark' />
             <div className="contentBox">
                 <form action="#" onSubmit={e=> {
                     handleSubmit(e)

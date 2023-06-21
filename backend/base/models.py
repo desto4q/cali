@@ -26,7 +26,8 @@ class Tweet(models.Model):
     body = models.CharField(max_length=1000)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.CharField(max_length=500, null=True, blank=True)
-    
+    # class Meta: 
+    #     ordering = ["-created_at"]
     def __str__(self) -> str:
         return (f"{self.user}" f"{self.created_at:%Y-%M-%D}:" f"{self.body}")
     

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./App.scss"
 import WebFont from 'webfontloader'
 import Router from './router/Router'
@@ -12,10 +12,12 @@ function App() {
     }
   })
   let dispatch = useDispatch()
-  let user = JSON.parse(localStorage.getItem("user"))
-  if (user != null) {
-    dispatch(login(user))
-  }
+  useEffect(()=> {
+    let user = JSON.parse(localStorage.getItem("user"))
+    if (user != null) {
+      dispatch(login(user))
+    }
+  },[])
   
   
   return (

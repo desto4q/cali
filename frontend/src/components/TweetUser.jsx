@@ -3,7 +3,7 @@ import React from 'react'
 function TweetUser({user,img}) {
   return (
     <div className="tweetUser">
-        <img src={img} alt="" />
+        <div className="img">{user[0]}</div>
         <p>{user && user}</p>
     </div>
   )
