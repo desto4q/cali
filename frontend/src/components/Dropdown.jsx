@@ -6,10 +6,13 @@ import { useEffect } from 'react'
 import Logout from './Logout'
 
 function Dropdown({transform,onCLick}) {
-    const {user} = useSelector((state )=> {
-        
-        return state.user
-    })
+    const user = useSelector(state=>state.user)
+    useEffect(()=>{
+        console.log(user)
+    },[user])
+
+
+
 
   return (
     <div className="dropdown" style={{transform: `translateY(${transform}%)`}}>

@@ -4,11 +4,14 @@ import UserProfile from './UserProfile'
 import { useDispatch, useSelector } from 'react-redux'
 import { Links } from '../data/data'
 import Logout from './Logout'
+import { useEffect } from 'react'
 
 function Nav() {
     
     const  user = useSelector(state=>state.user)
-    
+    useEffect(()=>{
+        console.log(user)
+    },[])
     
   return (
     <div className="nav">
