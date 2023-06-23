@@ -39,8 +39,11 @@ export let  AppContext = ({children}) =>{
       resize()
     })
   },[])
+  
+
+  let [pageNum,setPageNum] = useState()
   let values = {
-    col,bgImg
+    col,bgImg,pageNum
   }
 
 

@@ -9,12 +9,12 @@ import { userContext } from '../context/context'
 import M_nav from '../components/M_nav'
 function Router() {
 
-  const {col} = useContext(userContext)
+  const {col,pageNum} = useContext(userContext)
   return (
     <BrowserRouter>
       {col <= 2 ? <M_nav/> : <Nav/>}
         <Routes>
-            <Route path='/' element={<Home/>}/>
+            <Route path={`/page/:id`} element={<Home/>}/>
             <Route path ="/post" element={<Post/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/login' element={<Login/>}/>

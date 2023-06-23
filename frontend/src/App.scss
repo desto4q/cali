@@ -81,6 +81,19 @@ $comp1: #031B2E;
     
 }
 
+.feed {
+    .end {
+        background-color: transparentize($color: ($comp), $amount: 0.1);
+        outline: 1px solid $text;
+        color: $text;
+        padding: 12px;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 4px;
+    }
+    
+}
+
 .logout {
     background: none;
     border: none;

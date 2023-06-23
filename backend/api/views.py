@@ -6,6 +6,7 @@ from .serializer import *
 from django.http import JsonResponse
 from django.db.models import Q
 import json
+from rest_framework.pagination import PageNumberPagination
 
 
 @api_view(["GET"])
@@ -19,9 +20,11 @@ def home(request):
 
 @api_view(["GET"])
 def all_tweets(request):
+    pagination = PageNumberPagination()
     tweetsList = Tweet.objects.all()
-    serializer = tweetserializer(tweetsList,many=True)
-    return Response(serializer.data)
+    result = pagination.paginate_queryset(tweetsList,request)
+    serializer = tweetserializer(result,many=True)
+    return pagination.get_paginated_response(serializer.data)
 
 @api_view(["GET"])
 def find_user(request,pk):
@@ -36,10 +39,12 @@ def find_user(request,pk):
 
 @api_view(["GET"])
 def all_tweets_ordered(request,pk):
+    paginator = PageNumberPagination()
+    paginator.page_size = 5
     tweetsList = Tweet.objects.all().order_by(pk).reverse()
-    serializer = PostSerializer(tweetsList,many=True)
-    # serializer = tweetserializer()
-    return Response(serializer.data)
+    result = paginator.paginate_queryset(tweetsList,request)
+    serializer = PostSerializer(result,many=True)
+    return paginator.get_paginated_response(serializer.data)
 
 @api_view(["POST"])
 def post_tweet(request):

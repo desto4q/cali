@@ -3,14 +3,22 @@ import {v4} from "uuid"
 import { storage } from '../data/firebase/Firebase'
 
 import axios from 'axios'
-let url = "http://127.0.0.1:8000/tweets_order/created_at?format=json"
-export let fetchdata = async ()=> {
+
+export let fetchdata = async ({id})=> {
+  let url = `http://127.0.0.1:8000/tweets_order/created_at?format=json&page=${id}`
   try {
-    let resp =  await axios.get(url).then(res=>res.data)
+    let resp =  await axios.get(url).then(res=>{
+      return res.data
+    })
     return resp
   }
   catch (err)  {
-    return "error"
+    if (err.response.data.details =  "Invalid page") {
+      return "end"
+    }
+    else {
+      return "error"
+    }
   }
   
 }

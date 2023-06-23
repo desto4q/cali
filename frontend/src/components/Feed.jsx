@@ -5,15 +5,18 @@ import {useQuery, useQueryClient} from "@tanstack/react-query"
 import Layout from "react-masonry-list"
 import {Puff} from "react-loader-spinner"
 import { userContext } from '../context/context'
+import { useParams } from 'react-router-dom'
 function Feed() {  
   
   
   const client = useQueryClient()
-  const {bgImg} = useContext(userContext)
+  const {bgImg,pageNum} = useContext(userContext)
 
+  const {id} = useParams()
 
-  let {data,isLoading,isError,error} = useQuery(["data"], async () => {
-    let resp = await fetchdata()
+  let {data,isLoading,isError,error} = useQuery(["data",id], async () => {
+    console.log(id)
+    let resp = await fetchdata({id:id})
     return resp
   })
 
@@ -21,9 +24,7 @@ function Feed() {
 
  
 
-    useEffect(()=>{
-      console.log(data)
-    },[isError])
+    
 
 
   return (
@@ -36,14 +37,22 @@ function Feed() {
           <>
             {data != "error" ? 
               <>
-                <Layout minWidth={300} colCount={col} items={data
-                .map(({id,user,body,image},key)=>{
+                {
+                  data != "end" ? 
+                  <>
+                     <Layout minWidth={300} colCount={col} items={data.results
+                .map(({user,id,body,image},key)=>{                  
                   return (
                     <Tweet username={user} id={id} body={body} image={image} key={key} />
                   )
                   }
                 )
                 }/>
+                  </> :
+                  <>
+                    <div className='end'>end of content</div>
+                  </>
+                }
               </>
               : 
               <>
