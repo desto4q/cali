@@ -54,7 +54,7 @@ export let sendData = async ({c}) => {
 export let Links = [
   {
       name: "Home",
-      to: "",
+      to: "/page/1",
       icon: "",
   },
   {

@@ -9,9 +9,6 @@ import { useEffect } from 'react'
 function Nav() {
     
     const  user = useSelector(state=>state.user)
-    useEffect(()=>{
-        console.log(user)
-    },[])
     
   return (
     <div className="nav">

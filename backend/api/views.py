@@ -21,6 +21,7 @@ def home(request):
 @api_view(["GET"])
 def all_tweets(request):
     pagination = PageNumberPagination()
+    pagination.page_size = 15
     tweetsList = Tweet.objects.all()
     result = pagination.paginate_queryset(tweetsList,request)
     serializer = tweetserializer(result,many=True)
@@ -40,7 +41,7 @@ def find_user(request,pk):
 @api_view(["GET"])
 def all_tweets_ordered(request,pk):
     paginator = PageNumberPagination()
-    paginator.page_size = 5
+    paginator.page_size = 15
     tweetsList = Tweet.objects.all().order_by(pk).reverse()
     result = paginator.paginate_queryset(tweetsList,request)
     serializer = PostSerializer(result,many=True)

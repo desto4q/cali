@@ -543,3 +543,50 @@ $comp1: #031B2E;
     }
 }
 
+
+
+.paginate {
+    display: flex;
+    gap: 4px;
+    button {
+        background-color: $comp;
+        border: none;
+        height: 38px;
+        width: 38px;
+        display: grid;
+        place-items: center;
+        transition: 0.2s ease;
+        cursor: pointer;
+        a {
+            font-size: 32px;
+            color: $text;
+        }
+    }
+    form {
+        display: flex;
+        width: max-content;
+        gap: 4px;
+        .go {
+            font-size: 18px;
+            color: $text;
+            border-radius: 4px;
+            outline: 1px solid $comp;
+            border: none;
+            background-color: $comp1;
+        }
+        input {
+            width: 38px;
+            max-width: 100%;  
+            text-align: center;
+            border: none;
+            background: none;
+            color: $text;
+            font-size: 22px;
+            outline: 1px solid ;
+            border-radius: 4px;
+        }
+    }
+    button:active {
+        background-color: mediumseagreen;
+    }
+}

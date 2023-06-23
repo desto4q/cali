@@ -7,9 +7,6 @@ import Logout from './Logout'
 
 function Dropdown({transform,onCLick}) {
     const user = useSelector(state=>state.user)
-    useEffect(()=>{
-        console.log(user)
-    },[user])
 
 
 
