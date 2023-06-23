@@ -74,3 +74,10 @@ export let Links = [
   },
   
 ]
+
+
+export let fetchUserProfile = async ({id}) => {
+  let url = `http://127.0.0.1:8000/userpost/${id}?format=json`
+  let resp =  await axios.get(url).then(res => res.data)
+  return resp
+}

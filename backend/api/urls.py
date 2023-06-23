@@ -12,5 +12,5 @@ urlpatterns = [
     path("create/", views.create_user, name="createUser"),
     path("login/", views.login, name="login"),
     path("tweet/delete", views.delete_tweet, name="deleteTweet"),
-    
+    path("userpost/<int:pk>", views.viewing.as_view(),name="tweeter ")
 ] 

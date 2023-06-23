@@ -1,10 +1,12 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
-function TweetUser({user,img}) {
+function TweetUser({user,id}) {
   return (
     <div className="tweetUser">
-        <div className="img">{user[0]}</div>
-        <p>{user && user}</p>
+        <Link to={`/${user}/${id}`}>
+          <div className="img">{user[0]}</div>
+          <p>{user && user}</p>
+        </Link>
     </div>
   )
 }

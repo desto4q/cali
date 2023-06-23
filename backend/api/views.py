@@ -7,6 +7,9 @@ from django.http import JsonResponse
 from django.db.models import Q
 import json
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.views import APIView
+from rest_framework import mixins
+from rest_framework import generics
 
 
 @api_view(["GET"])
@@ -14,6 +17,9 @@ def home(request):
     users = User.objects.all()
     serializer = fetchSerializer(users, many=True)
     return Response(serializer.data)
+
+
+    
 
 
 
@@ -94,3 +100,16 @@ def delete_tweet(request):
     tweet = tweetserializer(getTweet)
     getTweet.delete()
     return Response(tweet.data)
+
+
+# learning class based views
+
+class viewing(mixins.ListModelMixin,generics.GenericAPIView,mixins.CreateModelMixin):
+    queryset = Tweet.objects.all()
+    serializer_class = PostSerializer
+    def get(self,request,pk):
+        tweet = Tweet.objects.filter(user = pk)
+        serializer = PostSerializer(tweet,many=True)    
+        return Response(serializer.data)
+        # return self.list(request)
+        

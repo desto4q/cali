@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
+
 import TweetUser from './TweetUser'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 
 function Tweet({username,image,body,id}) {
-    let dummyimg = "https://i.pinimg.com/564x/50/55/1f/50551f9183aa95a4564732612c568ee6.jpg"
     let user = useSelector(state=>state.user) 
 
     let handleDelete = async (e) => {
@@ -17,7 +16,7 @@ function Tweet({username,image,body,id}) {
 
   return (
     <div className="tweet">
-        <TweetUser user={username.user} img={username.profileImg}/>
+        <TweetUser user={username.user} id={username.id} img={username.profileImg}/>
         <hr />
          {user.username == username.user ? <button onClick={(e)=>{
           handleDelete(e)

@@ -28,8 +28,11 @@ function Signup() {
                     const notify = () => toast("username exists")
                     notify()
                 }
+                else {
+                    const notify = () => toast("created")
+                    notify()
+                }
             })
-        // console.log(username,password)
     }
 
     const {bgImg} = useContext(userContext)
