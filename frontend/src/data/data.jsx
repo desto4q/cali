@@ -5,9 +5,14 @@ import { storage } from '../data/firebase/Firebase'
 import axios from 'axios'
 let url = "http://127.0.0.1:8000/tweets_order/created_at?format=json"
 export let fetchdata = async ()=> {
+  try {
+    let resp =  await axios.get(url).then(res=>res.data)
+    return resp
+  }
+  catch (err)  {
+    return "error"
+  }
   
-  let resp =  await axios.get(url).then(res=>res.data).catch(res=>res)
-  return resp
 }
 
 export let sendData = async ({c}) => {
@@ -38,3 +43,26 @@ export let sendData = async ({c}) => {
   }
 }
 
+export let Links = [
+  {
+      name: "Home",
+      to: "",
+      icon: "",
+  },
+  {
+      name: "Post",
+      to: "/post",
+      icon: "",
+  },
+  {
+      name: "Report",
+      to: "",
+      icon: "",
+  },
+  {
+      name: "Help",
+      to: "",
+      icon: "",
+  },
+  
+]

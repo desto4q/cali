@@ -2,39 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import UserProfile from './UserProfile'
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../redux/slices/userSlice'
+import { Links } from '../data/data'
+import Logout from './Logout'
 
 function Nav() {
     
     const  user = useSelector(state=>state.user)
-    let Links = [
-        {
-            name: "Home",
-            to: "",
-            icon: "",
-        },
-        {
-            name: "Post",
-            to: "/post",
-            icon: "",
-        },
-        {
-            name: "Report",
-            to: "",
-            icon: "",
-        },
-        {
-            name: "Help",
-            to: "",
-            icon: "",
-        },
-        
-    ]
-    let dispatch = useDispatch()
-    let handleLogout = () => {
-        localStorage.removeItem("user")
-        dispatch(login({username: "", id: ""}))
-    }
+    
+    
   return (
     <div className="nav">
         <div className="content">
@@ -52,10 +27,8 @@ function Nav() {
                 })}
                 {user.username == "" ? <><Link to={"signup"}>Signup</Link> <Link to={"login"}>Login</Link></>: <></>}
             </div>
-            <button onClick={e=> {
-                handleLogout()
-            }} className='logout'>logout</button>
-        </div>
+                <Logout/>
+            </div>
     </div>
   )
 }

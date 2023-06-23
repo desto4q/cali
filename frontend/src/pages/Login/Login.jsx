@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { login } from '../../redux/slices/userSlice'
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import {Navigate, redirect} from "react-router-dom"
+import { userContext } from '../../context/context';
 function Login() {
     const dispatch = useDispatch()
     const user = useSelector((state) => {
@@ -40,8 +41,8 @@ function Login() {
                 }
             })
     }
+    const {bgImg} = useContext(userContext)
 
-    let bgImg = "https://firebasestorage.googleapis.com/v0/b/cali-1a1c9.appspot.com/o/background%2FGreen%20Forest%2C%20benjamin%20perrot.jpg?alt=media&token=aa728318-e779-4b59-8aec-3f862b904307"
 
     
     if (user.username != "") {

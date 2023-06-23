@@ -16,11 +16,81 @@ $comp1: #031B2E;
 }
 .app {
     display: flex;
+    
     min-height: 100dvh;
     width: 100%;
     background-color: $bg;
 }
 
+.mobileNav {
+    z-index: 10;
+    padding: 8px 12px;
+    background-color: $comp1;
+    display: flex;
+    position: sticky;
+    top: 0;
+    left: 0;
+    isolation: isolate;
+    .container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        z-index: 10;
+    }
+    .userProfile {
+        all:  unset;
+        box-sizing: border-box;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        p {
+            padding: 0 4px;
+        }
+    }
+    .end {
+        margin-left: auto;
+    }
+   
+    .dropdown {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: fit-content;
+        height: fit-content;
+        background-color: $comp1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        align-items: center;
+        padding: 24px 0;
+        z-index: -1;
+        transition: 0.2s ease;
+        a {
+            color: transparentize($color: $text, $amount: 0.5);
+            font-size: 22px;
+        }
+        a:active {
+            color: $text;
+        } 
+    }
+    
+}
+
+.logout {
+    background: none;
+    border: none;
+    color: $text;
+    font-size: 18px;
+    padding: 4px;
+    border-radius: 2px;
+    outline: 1px solid $text;
+
+}
 
 .nav {
     background-color: transparentize($color: $comp1, $amount: .4);
@@ -315,6 +385,8 @@ $comp1: #031B2E;
         }
     }
 }
+
+
 .userProfile {
     display: flex;
     flex-direction: column;

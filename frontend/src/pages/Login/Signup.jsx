@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { login } from '../../redux/slices/userSlice'
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
+import { userContext } from '../../context/context';
 
 function Signup() {
     const dispatch = useDispatch()
@@ -31,7 +32,7 @@ function Signup() {
         // console.log(username,password)
     }
 
-    let bgImg = "https://firebasestorage.googleapis.com/v0/b/cali-1a1c9.appspot.com/o/background%2FGreen%20Forest%2C%20benjamin%20perrot.jpg?alt=media&token=aa728318-e779-4b59-8aec-3f862b904307"
+    const {bgImg} = useContext(userContext)
   return (
     <>
      {/* <h2>Signup</h2>
