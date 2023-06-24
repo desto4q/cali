@@ -1,32 +1,76 @@
 import { useQuery } from '@tanstack/react-query'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchUserProfile } from '../data/data'
 import Tweet from "../components/Tweet"
+import Layout from "react-masonry-list"
+import { userContext } from '../context/context'
+import ProfilePaginator from '../components/ProfilePaginator'
+import { Puff } from 'react-loader-spinner'
 
 function UserDetails() {
 
-  const {userId} = useParams()
-  
-  const {data,isLoading} = useQuery(["user",],async () => {
-    let resp = await fetchUserProfile({id:userId})
+  const { userId, username, pageId } = useParams()
+  const { col } = useContext(userContext)
+
+  const { data, isLoading } = useQuery(["user", pageId], async () => {
+    let resp = await fetchUserProfile({ id: userId, page: pageId })
     return resp
   })
-  useEffect(()=>{
-    console.log(userId,data)
-  },[])
-  
+
+
+  useEffect(() => {
+    console.log(data)
+  }, [])
+
+
+
+
+
+
   return (
-    <div>
+    <div className='feed userDetails'>
+
+      <div className="userCont">
+        <div className="userImg">
+          {username[0]}
+        </div>
+        <hr />
+        <h2>{username}</h2>
+        <p>#{userId}</p>
+      </div>
       {
-        isLoading != true ? data.map(({user,body,id,image},key
-          )=>{
-            return (
+        isLoading != true ?
+          <>
+
+            {data != "error" ?
               <>
-              <Tweet username={user} body={body} image={image} id={id}/>
+                {data != "end" ?
+
+                  <>
+                    <Layout colCount={col} minWidth={300} items={data?.results.map(({ user, body, id, image }, key
+                    ) => {
+                      return (
+                        <>
+                          <Tweet username={user} body={body} image={image} id={id} />
+                        </>
+                      )
+                    })} />
+                  </>
+                  : 
+                  <>
+                    <div className='end'>end of content</div>
+                  </>
+                  }
               </>
-            )
-        }) : <></>
+              :
+              <><button>refetch</button></>
+            }
+
+            <ProfilePaginator userId={userId} pageId={pageId} user={username} />
+          </> : <>
+          <Puff/>
+          </>
       }</div>
   )
 }

@@ -76,8 +76,21 @@ export let Links = [
 ]
 
 
-export let fetchUserProfile = async ({id}) => {
-  let url = `http://127.0.0.1:8000/userpost/${id}?format=json`
-  let resp =  await axios.get(url).then(res => res.data)
+export let fetchUserProfile = async ({id,page}) => {
+  let url = `http://127.0.0.1:8000/userpost/${id}?format=json&page=${page}`
+  try {
+    let resp =  await axios.get(url).then(res=>{
+      return res.data
+    })
+    return resp
+  }
+  catch (err)  {
+    if (err.response.data.details =  "Invalid page") {
+      return "end"
+    }
+    else {
+      return "error"
+    }
+  }
   return resp
 }

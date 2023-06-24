@@ -103,13 +103,21 @@ def delete_tweet(request):
 
 
 # learning class based views
+class standardPagination(PageNumberPagination):
+    page_size= 20
+    page_size_query_param = 'page_size'
+    max_page_size = 25
 
 class viewing(mixins.ListModelMixin,generics.GenericAPIView,mixins.CreateModelMixin):
     queryset = Tweet.objects.all()
     serializer_class = PostSerializer
+    # pagination_class= standardPagination
     def get(self,request,pk):
-        tweet = Tweet.objects.filter(user = pk)
-        serializer = PostSerializer(tweet,many=True)    
-        return Response(serializer.data)
+        paginator = PageNumberPagination()
+        paginator.page_size = 15
+        tweetsList = Tweet.objects.filter(user = pk)
+        result = paginator.paginate_queryset(tweetsList,request)
+        serializer = PostSerializer(result,many=True)
+        return paginator.get_paginated_response(serializer.data)
         # return self.list(request)
         

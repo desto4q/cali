@@ -21,7 +21,7 @@ function Router() {
             <Route path ="/post" element={<Post/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/login' element={<Login/>}/>
-            <Route path='/:username/:userId/' element={<UserDetails/>}/>
+            <Route path='/:username/:userId/page/:pageId' element={<UserDetails/>}/>
         </Routes>
         
     </BrowserRouter>

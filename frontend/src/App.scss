@@ -595,3 +595,42 @@ $comp1: #031B2E;
         background-color: mediumseagreen;
     }
 }
+
+
+.userCont {
+    height: 300px;
+    width: 100%;
+    background-color: $comp;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    flex-direction: column;
+    gap: 4px;
+    hr {
+        width: 50%;
+        margin-top: 8px;
+        border: none;
+        outline: 1px solid $text;
+    }
+    .userImg {
+        height: 144px;
+        aspect-ratio: 1/1;
+        border-radius: 100%;
+        outline: 3px solid $text;
+        flex-shrink: 1;
+        background-color: $comp1;
+        font-size: 6rem;
+        display: grid;
+        place-items: center;
+        color: $text;
+    }
+    h2 {
+        font-size: 32px;
+    }
+    p {
+        font-size: 22px;
+        font-weight: 600;
+        color: $text;
+    }
+}

@@ -6,6 +6,7 @@ import Layout from "react-masonry-list"
 import {Puff} from "react-loader-spinner"
 import { userContext } from '../context/context'
 import { Link, useParams,useNavigate } from 'react-router-dom'
+import Paginate from './Paginate'
 function Feed() {  
   const navigate = useNavigate()
   
@@ -65,31 +66,8 @@ function Feed() {
         }
       </>
 
-      <div className="paginate">
-        <button>
-          <Link to={`/page/${parseInt(id) > 0 ? parseInt(id) -1 : 1}`}>-</Link>
-        </button>
-            <form action="#" onSubmit={e=>{
-              e.preventDefault()
-              let value = parseInt(e.target[0].value)
-              if (value < 1) {
-                value = 1
-                navigate(`/page/${value}`)
-                e.target[0].value = ""
-              }
-              else {
-                navigate(`/page/${value}`)
-                e.target[0].value = ""
-              }
-              
-            }}>
-              <input type="number" placeholder={id}/>
-              <button className='go'>Go</button>
-            </form>
-        <button>
-          <Link to={`/page/${parseInt(id)+1}`}>+</Link>
-        </button>
-      </div>
+     
+        <Paginate id={id}/>
    
     </div>
   )
