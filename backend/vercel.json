@@ -6,8 +6,11 @@
     }],
     "routes": [
         {
-            "src" : "/(*)",
+            "src" : "/(.*)",
             "dest": "cali/wsgi.py"
         }
+    ],
+    "rewrites":  [
+        {"source": "/(.*)", "destination": "/"}
     ]
 }
