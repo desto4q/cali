@@ -19,9 +19,7 @@ function UserDetails() {
   })
 
 
-  useEffect(() => {
-    console.log(data)
-  }, [])
+  
 
 
 

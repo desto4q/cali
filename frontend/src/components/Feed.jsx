@@ -16,7 +16,6 @@ function Feed() {
   const {id} = useParams()
 
   let {data,isLoading,isError,error} = useQuery(["data",id], async () => {
-    console.log(id)
     let resp = await fetchdata({id:id})
     return resp
   })
@@ -36,10 +35,10 @@ function Feed() {
         {
           isLoading != true  ? 
           <>
-            {data != "error" ? 
-              <>
-                {
-                  data != "end" ? 
+              {data != "error" ? 
+                <>
+                  {
+                    data != "end" ? 
                   <>
                      <Layout minWidth={300} colCount={col} items={data.results
                 .map(({user,id,body,image},key)=>{                  

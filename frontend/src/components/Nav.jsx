@@ -18,7 +18,7 @@ function Nav() {
             </div>
             <div className='link'>
                 <UserProfile/>
-                {Links.map(({name,icon,to},key)=>{
+                {Links().map(({name,icon,to},key)=>{
                     return (
                         <Link key={key} to={to}>
                             {name}

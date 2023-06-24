@@ -3,6 +3,7 @@ import {v4} from "uuid"
 import { storage } from '../data/firebase/Firebase'
 
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 export let fetchdata = async ({id})=> {
   let url = `http://127.0.0.1:8000/tweets_order/created_at?format=json&page=${id}`
@@ -51,29 +52,34 @@ export let sendData = async ({c}) => {
   }
 }
 
-export let Links = [
-  {
-      name: "Home",
-      to: "/page/1",
-      icon: "",
-  },
-  {
-      name: "Post",
-      to: "/post",
-      icon: "",
-  },
-  {
-      name: "Report",
-      to: "",
-      icon: "",
-  },
-  {
-      name: "Help",
-      to: "",
-      icon: "",
-  },
-  
-]
+export let Links = () => {
+  const user = useSelector(state=>state.user)
+  console.log(user)
+
+  return  [
+    {
+        name: "Home",
+        to: "/page/1",
+        icon: "",
+    },
+    {
+        name: "Post",
+        to: "/post",
+        icon: "",
+    },
+    {
+        name: "profile",
+        to: `/${user.username}/${user.id}/page/1`,
+        icon: "",
+    },
+    {
+        name: "Help",
+        to: "",
+        icon: "",
+    },
+    
+  ]
+}
 
 
 export let fetchUserProfile = async ({id,page}) => {
