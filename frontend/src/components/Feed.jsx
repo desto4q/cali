@@ -24,9 +24,6 @@ function Feed() {
 
  
 
-    
-
-
   return (
     <div className="feed">
       <img src={bgImg} className='bgImg' alt="" />

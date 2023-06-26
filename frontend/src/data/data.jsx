@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 
 export let fetchdata = async ({ id }) => {
-  let url = `https://cali-production.up.railway.app/?format=json&page=${id}`
+  let url = `https://cali-production.up.railway.app/tweets_order/created_at?format=json&page=${id}`
   try {
     let resp = await axios.get(url).then(res => {
       return res.data
@@ -26,7 +26,7 @@ export let fetchdata = async ({ id }) => {
 
 export let sendData = async ({ c }) => {
 
-  let url = "https://cali-production.up.railway.app/?format=json/tweet/add"
+  let url = "http://127.0.0.1:8000/tweet/add"
   let resp = await axios.post(url, c).then(res => res.data)
   return resp
 }
@@ -88,7 +88,7 @@ export let Links = () => {
 
 
 export let fetchUserProfile = async ({ id, page }) => {
-  let url = `https://cali-production.up.railway.app/?format=json&page=${page}`
+  let url = `https://cali-production.up.railway.app/userpost/${id}?format=json&page=${page}`
   try {
     let resp = await axios.get(url).then(res => {
       return res.data
@@ -109,7 +109,7 @@ export let fetchUserProfile = async ({ id, page }) => {
 
 
 export let searchPost = async ({ q, page }) => {
-  let url = `https://cali-production.up.railway.app/?format=json/?q=${q}&page=${page}`
+  let url = `https://cali-production.up.railway.app/search/?q=${q}&page=${page}`
   try {
     let resp = await axios.get(url).then(res => {
       return res.data
@@ -127,7 +127,7 @@ export let searchPost = async ({ q, page }) => {
 }
 
 export let searchUser = async ({ q, page }) => {
-  let url = `https://cali-production.up.railway.app/?format=json/?q=${q}&page=${page}`
+  let url = `https://cali-production.up.railway.app/searchuser/?q=${q}&page=${page}`
   try {
     let resp = await axios.get(url).then(res => {
       return res.data

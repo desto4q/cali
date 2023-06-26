@@ -20,8 +20,9 @@ function UserDetails() {
   })
 
   let navigate = useNavigate()
-  
-
+  useEffect(()=>{
+    console.log(data)
+  },[data])  
 
 
 
