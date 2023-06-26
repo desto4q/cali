@@ -105,15 +105,6 @@ DATABASES = {
 # }
 
 
-CORS_ALLOWED_ORIGINS = [
-    "https://example.com",
-    "https://sub.example.com",
-    "http://localhost:5173",
-    "http://127.0.0.1:9000",
-    "*"
-]
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -167,3 +158,8 @@ REST_FRAMEWORK = {
 
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
+
+
+CORS_ORIGIN_ALLOW_ALL = True   
+
+
