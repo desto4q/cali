@@ -131,4 +131,16 @@ def search(request):
     serializer = PostSerializer(pResult,many=True)
     # return pagination.get_paginated_response()
     return pagination.get_paginated_response(serializer.data)
+
+
+@api_view(["GET","POST"])
+def searchUser(request):
+    pagination = PageNumberPagination()
+    pagination.page_size = 15
+    q = request.GET.get("q") 
+    user_list = User.objects.filter(Q(username__icontains=q))
+    pResult = pagination.paginate_queryset(user_list,request)
+    serializer = userSerializer(pResult,many=True)
+    # return pagination.get_paginated_response()
+    return pagination.get_paginated_response(serializer.data)    
     

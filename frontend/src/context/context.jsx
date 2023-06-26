@@ -42,10 +42,13 @@ export let  AppContext = ({children}) =>{
   
 
   let [pageNum,setPageNum] = useState()
+  let [search,setSearch] = useState("")
   let values = {
-    col,bgImg,pageNum
+    col,bgImg,pageNum,search,setSearch
   }
 
+
+  
 
   return(
     <userContext.Provider value={values}>

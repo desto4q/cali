@@ -9,6 +9,7 @@ import { userContext } from '../context/context'
 import M_nav from '../components/M_nav'
 import Dummy from '../pages/dummy'
 import UserDetails from '../pages/UserDetails'
+import Searchpage from '../pages/Searchpage'
 function Router() {
 
   const {col} = useContext(userContext)
@@ -22,6 +23,7 @@ function Router() {
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/:username/:userId/page/:pageId' element={<UserDetails/>}/>
+            <Route path='/search/page/:pageId' element={<Searchpage/>}/>
         </Routes>
         
     </BrowserRouter>

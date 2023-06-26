@@ -16,9 +16,9 @@ function Tweet({username,image,body,id}) {
 
   return (
     <div className="tweet">
-        <TweetUser user={username.user} id={username.id} img={username.profileImg}/>
+        <TweetUser user={username?.user} id={username?.id} img={username?.profileImg}/>
         <hr />
-         {user.username == username.user ? <button onClick={(e)=>{
+         {user.username == username?.user ? <button onClick={(e)=>{
           handleDelete(e)
         }}>delete</button>: null}
         <div className="body">

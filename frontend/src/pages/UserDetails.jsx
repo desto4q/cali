@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { fetchUserProfile } from '../data/data'
 import Tweet from "../components/Tweet"
 import Layout from "react-masonry-list"
 import { userContext } from '../context/context'
 import ProfilePaginator from '../components/ProfilePaginator'
 import { Puff } from 'react-loader-spinner'
+import { IconArrowLeft } from '@tabler/icons-react'
 
 function UserDetails() {
 
@@ -18,7 +19,7 @@ function UserDetails() {
     return resp
   })
 
-
+  let navigate = useNavigate()
   
 
 
@@ -28,7 +29,11 @@ function UserDetails() {
 
   return (
     <div className='feed userDetails'>
-
+      <div className="backbtn" onClick={(e=>{
+        navigate(-1)
+      })}>
+        <IconArrowLeft/>
+      </div>
       <div className="userCont">
         <div className="userImg">
           {username[0]}

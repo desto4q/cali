@@ -13,5 +13,6 @@ urlpatterns = [
     path("login/", views.login, name="login"),
     path("tweet/delete", views.delete_tweet, name="deleteTweet"),
     path("userpost/<int:pk>", views.viewing.as_view(),name="tweeter "),
-    path("search/", views.search,name="search")
+    path("search/", views.search,name="search"),
+    path("searchuser/", views.searchUser,name="searchUser"),
 ] 

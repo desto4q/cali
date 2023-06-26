@@ -546,9 +546,8 @@ $comp1: #031B2E;
             }
         }
     }
+    
 }
-
-
 
 .paginate {
     display: flex;
@@ -563,6 +562,7 @@ $comp1: #031B2E;
         transition: 0.2s ease;
         cursor: pointer;
         a {
+            width: 100%;
             font-size: 32px;
             color: $text;
         }
@@ -632,5 +632,180 @@ $comp1: #031B2E;
         font-size: 22px;
         font-weight: 600;
         color: $text;
+    }
+}
+
+
+.searchPage {
+    width: 100%;
+    isolation: isolate;
+    .search_Header  {
+        height: 62px;
+        background-color: $comp1;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        left: 0;
+        gap: 8px;
+    }
+    form:focus-within {
+        outline: 1px solid $text;
+    }
+    .searchBox {
+        width: 100%;
+        // padding: 2px 0;
+        max-width: 400px;
+        background-color: $comp;
+        display: flex;
+        height: 32px;
+        border-radius: 4px;
+        input {
+            width: 100%;
+            background-color: inherit;
+            outline: none;
+            border: none;
+            color: white;
+            padding:  0 2px;
+        }
+        ::placeholder {
+            color:  transparentize($color: $text, $amount: 0.6);
+        }
+        overflow: hidden;
+    }
+    button {
+        outline: none;
+        border: none;
+        box-sizing: border-box;
+        background: none;
+        display: grid;
+        place-items: center;
+        color: $text;
+        cursor: pointer;
+        background-color: $bg;
+        padding: 4px;
+        transition: 0.2s ease;
+    }
+    button:is(:active,:hover) {
+        background-color:lighten($color: $comp1, $amount: 5);
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 48px;
+        gap: 24px;
+        padding: 12px 4px;
+    }
+    
+    .filter {
+        background-color: $comp;
+        color:  $text;
+        font-size: 18px;
+        padding: 4px;
+        border-radius: 4px;
+        text-transform: capitalize;
+        position: relative;
+        cursor: pointer;
+        .filter_options {
+            padding-top: 8px;
+            background-color: inherit;
+            width: 100%;
+            left: 0;
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            .option {
+                font-size: 14px;
+                padding: 8px 4px;
+                
+            }
+            :hover {
+                background-color: lighten($color: $comp1, $amount: 0.2);
+            }
+            :active {
+                background-color: transparentize($color: mediumseagreen, $amount: 0.5);
+            }
+        }
+    }
+    .filter:is(:focus,:active) {
+        .filter_options {
+            opacity: 1;
+            pointer-events: all;
+            cursor: pointer;
+        }
+    }
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+} 
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.userSearch {
+    background-color: $comp1;
+    outline: 1px solid $text;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px;
+    a {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: $text;
+        font-size: 16px;
+    }
+    .img{
+        width: 38px;
+        height: 38px;
+        // outline: none;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 500;
+        background-color: purple;
+    }
+
+    transition: 0.2s ease;
+}
+
+.userSearch:hover {
+    background-color: lighten($color: $comp1, $amount: 10,);
+}
+
+.userDetails {
+    position: relative;
+    isolation: isolate;
+    // z-index: 10;
+    .backbtn {
+        position: fixed;
+        top: 100px;
+        z-index: 100;
+        left:24px;
+        height: 48px;
+        aspect-ratio: 1/1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background-color: $comp1;
+        border-radius: 100%;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+    .backbtn:hover {
+        background-color: $comp;
+        outline: 1px solid $text;
     }
 }
