@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import UserProfile from './UserProfile'
 import { Twirl as Hamburger, Twirl } from 'hamburger-react'
-import Dropdown from './dropdown'
+import Dropdown from './Dropdown'
+
 function M_nav() {
   let [trans,setTrans] = useState(-100)
   let [isOpen,setOpen] = useState(false)
