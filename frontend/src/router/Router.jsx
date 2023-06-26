@@ -7,9 +7,9 @@ import Signup from '../pages/Login/Signup'
 import Login from '../pages/Login/Login'
 import { userContext } from '../context/context'
 import M_nav from '../components/M_nav'
-import Dummy from '../pages/dummy'
 import UserDetails from '../pages/UserDetails'
 import Searchpage from '../pages/Searchpage'
+import Dummy from '../pages/Dummy'
 function Router() {
 
   const {col} = useContext(userContext)

@@ -3,7 +3,9 @@ import { Navigate } from 'react-router-dom'
 
 function Dummy() {
   return (
-    <Navigate to={"page/1"}/>
+    <>
+      <Navigate to={"page/1"}/>
+    </>
   )
 }
 
