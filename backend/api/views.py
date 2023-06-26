@@ -10,7 +10,7 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from rest_framework import mixins
 from rest_framework import generics
-
+from itertools import chain
 
 @api_view(["GET"])
 def home(request):
@@ -120,4 +120,15 @@ class viewing(mixins.ListModelMixin,generics.GenericAPIView,mixins.CreateModelMi
         serializer = PostSerializer(result,many=True)
         return paginator.get_paginated_response(serializer.data)
         # return self.list(request)
-        
+    
+@api_view(["Post","GET"])
+def search(request):
+    pagination = PageNumberPagination()
+    pagination.page_size = 15
+    q = request.GET.get("q") 
+    Tweet_list = Tweet.objects.filter(Q(body__icontains=q))
+    pResult = pagination.paginate_queryset(Tweet_list,request)
+    serializer = PostSerializer(pResult,many=True)
+    # return pagination.get_paginated_response()
+    return pagination.get_paginated_response(serializer.data)
+    
