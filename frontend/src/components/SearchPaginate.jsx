@@ -12,7 +12,7 @@ function SearchPaginate({ id, query }) {
             <form action="#" onSubmit={e => {
                 e.preventDefault()
                 let value = parseInt(e.target[0].value)
-                if (value == NaN || value == undefined) [
+                if (value == undefined) [
                     value = 1
                 ]
                 if (value < 1) {

@@ -8,6 +8,7 @@ import { userContext } from '../context/context'
 import ProfilePaginator from '../components/ProfilePaginator'
 import { Puff } from 'react-loader-spinner'
 import { IconArrowLeft } from '@tabler/icons-react'
+import Mymasonry from '../components/Mymasonry'
 
 function UserDetails() {
 
@@ -21,7 +22,7 @@ function UserDetails() {
 
   let navigate = useNavigate()
   useEffect(()=>{
-    console.log(data)
+    console.log(userId)
   },[data])  
 
 
@@ -52,14 +53,16 @@ function UserDetails() {
                 {data != "end" ?
 
                   <>
-                    <Layout colCount={col} minWidth={300} items={data?.results.map(({ user, body, id, image }, key
-                    ) => {
-                      return (
-                        <>
-                          <Tweet username={user} body={body} image={image} id={id} />
-                        </>
-                      )
-                    })} />
+
+                    <Mymasonry
+                     data={data?.results.map(({ user, body, id, image }, key
+                      ) => {
+                        return (
+                          <>
+                            <Tweet username={user} body={body} image={image} id={id} />
+                          </>
+                        )
+                      })}></Mymasonry>
                   </>
                   : 
                   <>

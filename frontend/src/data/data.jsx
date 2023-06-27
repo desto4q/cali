@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 
 export let fetchdata = async ({ id }) => {
   let url = `https://cali-production.up.railway.app/tweets_order/created_at?format=json&page=${id}`
+  // let url = `http://127.0.0.1:8000/tweets_order/created_at?format=json&page=${1}`
   try {
     let resp = await axios.get(url).then(res => {
       return res.data

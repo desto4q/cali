@@ -2,14 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import { IconArrowDown, IconSearch } from "@tabler/icons-react"
 import { userContext } from '../context/context'
 import { useParams, useSearchParams } from 'react-router-dom'
-import Layout from 'react-masonry-list'
 import { useQuery } from '@tanstack/react-query'
 import { searchPost, searchUser } from '../data/data'
 import Tweet from '../components/Tweet'
-import Paginate from '../components/Paginate'
 import { Puff } from 'react-loader-spinner'
 import User_search from '../components/User_search'
 import SearchPaginate from '../components/SearchPaginate'
+import Mymasonry from '../components/Mymasonry'
 
 
 function Searchpage() {
@@ -17,7 +16,6 @@ function Searchpage() {
     let { pageId } = useParams()
     let [searchparam, setParam] = useSearchParams()
     let searchQuery = searchparam.get("q").replace("+","%")
-    let [isActive,setActive] = useState(false)
     let [filter, setFilter] = useState("post")
 
 
@@ -40,7 +38,9 @@ function Searchpage() {
     })
     useEffect(()=>{
         refetch()
+        console.log(filter)
     },[filter])
+
     let handleClick = (e) => {
         setFilter(e.target.innerHTML.toLowerCase())
     }
@@ -73,7 +73,7 @@ function Searchpage() {
                                     {
                                         data != "end" ?
                                             <>
-                                                <Layout minWidth={300} colCount={col} items={data.results
+                                                <Mymasonry data={data.results
                                                     .map(({ user, id, body, image, username }, key) => {
                                                         if (filter == "post") {
                                                             return (
@@ -86,8 +86,7 @@ function Searchpage() {
                                                             )
                                                         }
                                                     }
-                                                    )
-                                                } />
+                                                    )}></Mymasonry>
                                             </> :
                                             <>
                                                 <div className='end'>end of content</div>

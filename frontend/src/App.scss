@@ -81,18 +81,13 @@ $comp1: #031B2E;
     
 }
 
-.feed {
-    .end {
-        background-color: transparentize($color: ($comp), $amount: 0.1);
-        outline: 1px solid $text;
-        color: $text;
-        padding: 12px;
-        font-size: 18px;
-        font-weight: 500;
-        border-radius: 4px;
+.masonryfeed {
+    > div {
+        display: flex;
+        align-items: center;
     }
-    
 }
+
 
 .logout {
     background: none;
@@ -212,6 +207,7 @@ $comp1: #031B2E;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
     .bgImg {
         z-index: -2;
         position: fixed;
@@ -221,6 +217,15 @@ $comp1: #031B2E;
         top: 0;
         filter: blur(5px);
         object-fit: cover;
+    }
+    .end {
+        background-color: transparentize($color: ($comp), $amount: 0.1);
+        outline: 1px solid $text;
+        color: $text;
+        padding: 12px;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 4px;
     }
 }
 
@@ -263,6 +268,7 @@ $comp1: #031B2E;
     height: fit-content;
     gap: 4px;
     padding-top: 8px;
+    margin: 12px 0;
     hr {
         all:  unset;
         box-sizing: border-box;
@@ -273,7 +279,8 @@ $comp1: #031B2E;
     .body {
         color: $text;
         font-size: 14px;
-        padding: 0 2px;
+        padding: 0 4px;
+        margin: 4px 0;
     }
     .imgCont {
         padding: 2px;
@@ -281,6 +288,7 @@ $comp1: #031B2E;
         width: 100%;
         border-radius: 10px;
         overflow: hidden;
+        // background-color: red;
         img {
             height: 100%;
             width: 100%;
@@ -458,7 +466,7 @@ $comp1: #031B2E;
     .contentBox {
         width: 100%;
         height: 100%;
-        // background-color: red;
+        // 
         padding: 8px;
         display: flex;
         flex-direction: column;
