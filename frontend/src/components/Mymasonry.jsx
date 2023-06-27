@@ -5,7 +5,7 @@ import { userContext } from '../context/context'
 function Mymasonry({data}) {
     const {col} = useContext(userContext)
     return (
-    <Masonry columnsCount={col} className='masonryfeed'>
+    <Masonry columnsCount={col} gutter='12px' className='masonryfeed'>
         {...data}
     </Masonry>
   )
