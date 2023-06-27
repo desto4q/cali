@@ -14,6 +14,8 @@ function Login() {
               
 
     const loginUser = async (e) => {
+        const notify = () => toast('pending')
+        notify()
         e.preventDefault()
         console.log(e)
         let username = e.target[0].value
@@ -22,8 +24,8 @@ function Login() {
             username: username,
             password: password
         }
-        let url = "http://127.0.0.1:8000/login/"
-        let resp = await axios.post(url,newuser).then(res => 
+        let url = "https://cali-production.up.railway.app/login/"
+        let resp = await toast.promise(axios.post(url,newuser)).then(res => 
             {
                 
                 if (res.data ==  "incorrect password" ) {

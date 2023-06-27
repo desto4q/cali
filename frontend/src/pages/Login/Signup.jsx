@@ -12,7 +12,7 @@ function Signup() {
         // console.log(state)
       })
       
-
+    
     const login = async (e) => {
         e.preventDefault()
         let username = e.target[0].value
@@ -21,8 +21,10 @@ function Signup() {
             username: username,
             password: password
         }
-        let url = "http://127.0.0.1:8000/create/"
-        let resp = await axios.post(url,newuser).then(res => 
+        let url = "https://cali-production.up.railway.app/create/"
+        const notify =() => toast("pending")
+            notify()
+        let resp = await toast.promise(axios.post(url,newuser)).then(res => 
             {
                 if (res.data ==  "exist" ) {
                     const notify = () => toast("username exists")
@@ -33,6 +35,7 @@ function Signup() {
                     notify()
                 }
             })
+        return resp
     }
 
     const {bgImg} = useContext(userContext)
