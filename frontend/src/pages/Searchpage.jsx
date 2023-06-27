@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { IconSearch } from "@tabler/icons-react"
+import { IconArrowDown, IconSearch } from "@tabler/icons-react"
 import { userContext } from '../context/context'
 import { useParams, useSearchParams } from 'react-router-dom'
 import Layout from 'react-masonry-list'
@@ -55,7 +55,7 @@ function Searchpage() {
                     </button>
                 </form>
                 <div className="filter" tabIndex={1}>
-                    {filter}
+                    {filter} <IconArrowDown/>
                     <div className="filter_options">
                         <div className="option" onClick={handleClick}>user</div>
                         <hr />

@@ -73,7 +73,7 @@ export let Links = () => {
     },
     {
       name: "search",
-      to: "/search/page/1",
+      to: "/search/page/1/?q=",
       icon: ""
     },
 

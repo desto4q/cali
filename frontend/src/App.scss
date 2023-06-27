@@ -640,7 +640,7 @@ $comp1: #031B2E;
     width: 100%;
     isolation: isolate;
     .search_Header  {
-        height: 62px;
+    
         background-color: $comp1;
         width: 100%;
         display: flex;
@@ -650,6 +650,9 @@ $comp1: #031B2E;
         top: 0;
         left: 0;
         gap: 8px;
+        flex-wrap: wrap;
+        height: 100%;
+        padding: 4px 8px;
     }
     form:focus-within {
         outline: 1px solid $text;
@@ -698,6 +701,7 @@ $comp1: #031B2E;
         margin-top: 48px;
         gap: 24px;
         padding: 12px 4px;
+        
     }
     
     .filter {
@@ -709,6 +713,7 @@ $comp1: #031B2E;
         text-transform: capitalize;
         position: relative;
         cursor: pointer;
+        display: flex;
         .filter_options {
             padding-top: 8px;
             background-color: inherit;
@@ -717,6 +722,7 @@ $comp1: #031B2E;
             position: absolute;
             opacity: 0;
             pointer-events: none;
+            top: 32px;
             .option {
                 font-size: 14px;
                 padding: 8px 4px;
