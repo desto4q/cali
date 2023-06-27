@@ -651,7 +651,7 @@ $comp1: #031B2E;
         left: 0;
         gap: 8px;
         flex-wrap: wrap;
-        height: 100%;
+        height: max-content;
         padding: 4px 8px;
     }
     form:focus-within {
@@ -722,7 +722,8 @@ $comp1: #031B2E;
             position: absolute;
             opacity: 0;
             pointer-events: none;
-            top: 32px;
+            top: 40px;
+            z-index: 10;
             .option {
                 font-size: 14px;
                 padding: 8px 4px;
