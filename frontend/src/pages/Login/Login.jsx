@@ -25,7 +25,7 @@ function Login() {
             password: password
         }
         let url = "https://cali-production.up.railway.app/login/"
-        let resp = await toast.promise(axios.post(url,newuser)).then(res => 
+        let resp = await toast.promise(axios.post(url,newuser),{pending: "ispending",success: "success",error: "error"}).then(res => 
             {
                 
                 if (res.data ==  "incorrect password" ) {

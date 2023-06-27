@@ -24,7 +24,7 @@ function Signup() {
         let url = "https://cali-production.up.railway.app/create/"
         const notify =() => toast("pending")
             notify()
-        let resp = await toast.promise(axios.post(url,newuser)).then(res => 
+        let resp = await toast.promise(axios.post(url,newuser),{pending: "ispending",success: "success",error: "error"}).then(res => 
             {
                 if (res.data ==  "exist" ) {
                     const notify = () => toast("username exists")
