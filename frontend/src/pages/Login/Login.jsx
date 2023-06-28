@@ -37,7 +37,8 @@ function Login() {
                     notify()
                     let data = {...res.data}
                     localStorage.setItem("user",JSON.stringify(data))
-                    dispatch(login(data))
+                    console.log(data)
+                    dispatch(login({...data}))
                     
                     
                 }
