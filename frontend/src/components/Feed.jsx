@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import Tweet from './Tweet'
 import { fetchdata, sendData } from '../data/data'
 import { useQuery, useQueryClient } from "@tanstack/react-query"
-import Layout from "react-masonry-list"
 import { Puff } from "react-loader-spinner"
 import { userContext } from '../context/context'
 import { Link, useParams, useNavigate } from 'react-router-dom'

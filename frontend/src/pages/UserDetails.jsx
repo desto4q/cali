@@ -3,7 +3,6 @@ import { useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { fetchUserProfile } from '../data/data'
 import Tweet from "../components/Tweet"
-import Layout from "react-masonry-list"
 import { userContext } from '../context/context'
 import ProfilePaginator from '../components/ProfilePaginator'
 import { Puff } from 'react-loader-spinner'
@@ -21,9 +20,9 @@ function UserDetails() {
   })
 
   let navigate = useNavigate()
-  useEffect(()=>{
+  useEffect(() => {
     console.log(userId)
-  },[data])  
+  }, [data])
 
 
 
@@ -31,12 +30,13 @@ function UserDetails() {
 
   return (
     <div className='feed userDetails'>
-      <div className="backbtn" onClick={(e=>{
-        navigate(-1)
-      })}>
-        <IconArrowLeft/>
-      </div>
+
       <div className="userCont">
+        <div className="backbtn" onClick={(e => {
+          navigate(-1)
+        })}>
+          <IconArrowLeft />
+        </div>
         <div className="userImg">
           {username[0]}
         </div>
@@ -55,7 +55,7 @@ function UserDetails() {
                   <>
 
                     <Mymasonry
-                     data={data?.results.map(({ user, body, id, image }, key
+                      data={data?.results.map(({ user, body, id, image }, key
                       ) => {
                         return (
                           <>
@@ -64,11 +64,11 @@ function UserDetails() {
                         )
                       })}></Mymasonry>
                   </>
-                  : 
+                  :
                   <>
                     <div className='end'>end of content</div>
                   </>
-                  }
+                }
               </>
               :
               <><button>refetch</button></>
@@ -76,7 +76,7 @@ function UserDetails() {
 
             <ProfilePaginator userId={userId} pageId={pageId} user={username} />
           </> : <>
-          <Puff/>
+            <Puff />
           </>
       }</div>
   )

@@ -802,25 +802,40 @@ input::-webkit-inner-spin-button {
 .userDetails {
     position: relative;
     isolation: isolate;
-    // z-index: 10;
-    .backbtn {
-        position: fixed;
-        top: 100px;
-        z-index: 100;
-        left:24px;
-        height: 48px;
-        aspect-ratio: 1/1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        background-color: $comp1;
-        border-radius: 100%;
-        cursor: pointer;
-        transition: 0.2s ease;
+    width: 100%;
+    
+    .userCont {
+        position: relative;
+        background-color: blue;
+        .backbtn {
+            position: fixed;
+            top: 100px;
+            z-index: 100;
+            left: 144px;
+            height: 48px;
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background-color: $comp1;
+            border-radius: 100%;
+            cursor: pointer;
+            transition: 0.2s ease;
+    }
     }
     .backbtn:hover {
         background-color: $comp;
         outline: 1px solid $text;
     }
+}
+
+
+
+@media screen and (max-width: 1100px) {
+    .userDetails {
+        .backbtn {
+            left: 64px !important;
+        }
+    }   
 }
