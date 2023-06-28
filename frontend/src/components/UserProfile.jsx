@@ -10,7 +10,7 @@ function UserProfile() {
   return (
     <div className="userProfile">
         {user.profileImg ? <img src={user.profileImg} alt="" /> : <>
-        <div className='imgHolder'>{user.username[0].toUpperCase()}</div>
+        <div className='imgHolder'>{user.username[0]}</div>
         </>}
         <div className="details">
             <h3>{user.username}</h3>
