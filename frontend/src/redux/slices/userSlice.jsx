@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 let user = {
-    username: "" ,
+    username: "Guest" ,
     id: 0,
 
 }
